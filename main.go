@@ -1,4 +1,4 @@
-package playmovie_bff
+package main
 
 func main() {
 	
