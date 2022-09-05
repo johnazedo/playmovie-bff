@@ -6,11 +6,11 @@ import (
 
 type GetHomeUseCase struct {
 	MovieRepository
-	HomeRepository
+	CatalogRepository
 }
 
 func (uc *GetHomeUseCase) Execute() ([]Trail, error) {
-	genres := uc.HomeRepository.GetGenresList()
+	genres := uc.CatalogRepository.GetGenresList()
 	var trails []Trail
 
 	for _, genre := range genres {

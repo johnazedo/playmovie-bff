@@ -5,6 +5,6 @@ type MovieRepository interface {
 	GetMoviesByGenres(genreId string) ([]Movie, error)
 }
 
-type HomeRepository interface {
+type CatalogRepository interface {
 	GetGenresList() []Genre
 }
