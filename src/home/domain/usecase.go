@@ -24,7 +24,7 @@ func (uc *GetHomeUseCase) Execute() ([]Trail, error) {
 		}
 	}
 
-	if len(trails) > 0 {
+	if len(trails) == 0 {
 		return nil, errors.New("has no trail")
 	}
 
