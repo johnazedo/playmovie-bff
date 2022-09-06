@@ -2,7 +2,6 @@ package home
 
 import (
 	. "github.com/johnazedo/playmovie-bff/src/home/domain"
-	. "github.com/johnazedo/playmovie-bff/src/tools"
 )
 
 type MovieRepositoryImpl struct {
@@ -11,10 +10,6 @@ type MovieRepositoryImpl struct {
 }
 
 func (r MovieRepositoryImpl) GetMovie(id string) (Movie, error) {
-	_, err := r.ApiHandler.Get("/movie/" + id)
-	if err != nil {
-		return Movie{}, err
-	}
 	return Movie{}, nil
 }
 
