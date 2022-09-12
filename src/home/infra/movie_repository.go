@@ -1,11 +1,12 @@
 package home
 
 import (
+	"github.com/johnazedo/playmovie-bff/src/hermes"
 	. "github.com/johnazedo/playmovie-bff/src/home/domain"
 )
 
 type MovieRepositoryImpl struct {
-	ApiHandler
+	hermes.Client
 	MovieRepository
 }
 
