@@ -7,7 +7,7 @@ import (
 )
 
 type MovieRepositoryImpl struct {
-	Service hermes.Client
+	Service hermes.Hermes
 	MovieRepository
 }
 

@@ -8,9 +8,17 @@ import (
 	"os"
 )
 
-type Client struct{}
+type Model interface{}
 
-func (c *Client) Get(model interface{}, path string) error {
+type Hermes interface {
+	Get(model Model, path string) error
+}
+
+type Client struct {
+	Hermes
+}
+
+func (c *Client) Get(model Model, path string) error {
 	var client http.Client
 	url := getFullUrl(path)
 	response, err := client.Get(url)
