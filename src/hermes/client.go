@@ -10,22 +10,22 @@ import (
 
 type Client struct{}
 
-func (c *Client) Get(model interface{}, path string) (interface{}, error) {
+func (c *Client) Get(model interface{}, path string) error {
 	var client http.Client
 	url := getFullUrl(path)
 	response, err := client.Get(url)
 	if err != nil {
-		return nil, err
+		return err
 	}
 	buffer, err := readResponse(response)
 	if err != nil {
-		return nil, err
+		return err
 	}
 	err = json.Unmarshal(buffer, model)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	return model, err
+	return nil
 }
 
 func readResponse(response *http.Response) ([]byte, error) {
