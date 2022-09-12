@@ -9,14 +9,7 @@ import (
 )
 
 type Model interface{}
-
-type Hermes interface {
-	Get(model Model, path string) error
-}
-
-type Client struct {
-	Hermes
-}
+type Client struct{}
 
 func (c *Client) Get(model Model, path string) error {
 	var client http.Client
@@ -41,11 +34,11 @@ func readResponse(response *http.Response) ([]byte, error) {
 	if response.StatusCode == http.StatusOK {
 		buffer, err := io.ReadAll(response.Body)
 		if err != nil {
-			return nil, err
+			return nil, NewHttpError(err.Error(), response.StatusCode)
 		}
 		return buffer, nil
 	}
-	return nil, NewHttpError(response.StatusCode)
+	return nil, NewHttpError("error to read response", response.StatusCode)
 }
 
 func getFullUrl(path string) string {

@@ -7,8 +7,8 @@ type HttpError struct {
 	StatusCode int
 }
 
-func NewHttpError(statusCode int) *HttpError {
+func NewHttpError(message string, statusCode int) *HttpError {
 	return &HttpError{
-		errors.New("error in request"), statusCode,
+		errors.New(message), statusCode,
 	}
 }
