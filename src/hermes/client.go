@@ -36,23 +36,6 @@ func (c *ClientConcrete) Get(model any, path string) error {
 	return nil
 }
 
-//func (d *decodeState) unmarshal(v any) error {
-//	rv := reflect.ValueOf(v)
-//	if rv.Kind() != reflect.Pointer || rv.IsNil() {
-//		return &InvalidUnmarshalError{reflect.TypeOf(v)}
-//	}
-//
-//	d.scan.reset()
-//	d.scanWhile(scanSkipSpace)
-//	// We decode rv not rv.Elem because the Unmarshaler interface
-//	// test must be applied at the top level of the value.
-//	err := d.value(rv)
-//	if err != nil {
-//		return d.addErrorContext(err)
-//	}
-//	return d.savedError
-//}
-
 func readResponse(response *http.Response) ([]byte, error) {
 	defer response.Body.Close()
 	if response.StatusCode == http.StatusOK {

@@ -12,7 +12,7 @@ type MovieRepositoryImpl struct {
 }
 
 func (r MovieRepositoryImpl) GetMoviesByGenres(genreId string) ([]Movie, error) {
-	var model TrailModel
+	var model MoviesModel
 	url := fmt.Sprintf("/discover/movie?with_genres=%s", genreId)
 	err := r.Service.Get(&model, url)
 	if err != nil {

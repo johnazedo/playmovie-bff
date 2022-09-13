@@ -4,11 +4,11 @@ import (
 	. "github.com/johnazedo/playmovie-bff/src/home/domain"
 )
 
-type TrailModel struct {
+type MoviesModel struct {
 	Result []MovieModel `json:"results"`
 }
 
-func (m *TrailModel) toDomain() []Movie {
+func (m *MoviesModel) toDomain() []Movie {
 	var movies []Movie
 	for _, model := range m.Result {
 		movies = append(movies, model.toDomain())
