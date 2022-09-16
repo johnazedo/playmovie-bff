@@ -2,6 +2,7 @@ package home
 
 import (
 	. "github.com/johnazedo/playmovie-bff/src/home/domain"
+	"strconv"
 )
 
 type MoviesModel struct {
@@ -17,13 +18,13 @@ func (m *MoviesModel) toDomain() []Movie {
 }
 
 type MovieModel struct {
-	ID         string `json:"id"`
+	ID         int64  `json:"id"`
 	Title      string `json:"title"`
 	PosterPath string `json:"poster_path"`
 }
 
 func (m *MovieModel) toDomain() Movie {
 	return Movie{
-		ID: m.ID, Title: m.Title, ImageURL: m.PosterPath,
+		ID: strconv.FormatInt(m.ID, 10), Title: m.Title, ImageURL: "https://image.tmdb.org/t/p/w500" + m.PosterPath,
 	}
 }

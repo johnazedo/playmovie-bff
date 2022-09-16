@@ -49,5 +49,5 @@ func readResponse(response *http.Response) ([]byte, error) {
 }
 
 func getFullUrl(path string) string {
-	return fmt.Sprintf("%s%s?api_key=%s", os.Getenv("BASE_API_URL"), path, os.Getenv("API_KEY"))
+	return fmt.Sprintf("%s%s&api_key=%s", os.Getenv("BASE_API_URL"), path, os.Getenv("API_KEY"))
 }

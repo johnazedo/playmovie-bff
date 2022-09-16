@@ -10,18 +10,23 @@ type GetHomeUseCase struct {
 }
 
 func (uc *GetHomeUseCase) Execute() ([]Trail, error) {
-	genres := uc.CatalogRepository.GetGenresList()
+	genres, err := uc.CatalogRepository.GetGenresList()
+	if err != nil {
+		return []Trail{}, err
+	}
+
 	var trails []Trail
 
 	for _, genre := range genres {
 		movies, err := uc.MovieRepository.GetMoviesByGenres(genre.ID)
 		if err != nil {
-			trails = append(trails, Trail{
-				genre.ID,
-				genre.Title,
-				movies,
-			})
+			return []Trail{}, err
 		}
+		trails = append(trails, Trail{
+			genre.ID,
+			genre.Title,
+			movies,
+		})
 	}
 
 	if len(trails) == 0 {

@@ -5,5 +5,5 @@ type MovieRepository interface {
 }
 
 type CatalogRepository interface {
-	GetGenresList() []Genre
+	GetGenresList() ([]Genre, error)
 }
