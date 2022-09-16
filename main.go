@@ -11,5 +11,5 @@ func main() {
 	// Server
 	e := echo.New()
 	e.GET("/home", home.GetHome)
-	e.Logger.Fatal(e.Start("172.17.47.141:8000"))
+	e.Logger.Fatal(e.Start("0.0.0.0:8080"))
 }
