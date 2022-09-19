@@ -1,10 +1,11 @@
 FROM golang:1.19-alpine
 
 # Set the Current Working Directory inside the container
-WORKDIR /.
+WORKDIR /app
 
 # Copy go mod and sum files
-COPY go.mod go.sum ./
+COPY go.mod ./
+COPY go.sum ./
 
 # Download all dependancies. Dependencies will be cached if the go.mod and go.sum files are not changed
 RUN go mod download
@@ -13,10 +14,10 @@ RUN go mod download
 COPY . .
 
 # Build the Go app
-RUN go build -o main .
+RUN go build -o bin/main
 
 # Expose port 8080 to the outside world
 EXPOSE 8080
 
-# Run the executable
-CMD ["./main"]
+## Run the executable
+CMD ["./bin/main"]
